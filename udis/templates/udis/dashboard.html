@@ -1,0 +1,55 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+    <div class="col">
+        <div class="col-sm-12 col-md-12">
+            <h3>Last messages</h3>
+        </div>
+        {% for message in messages %}
+        <div class="col-sm-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ message.title }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ message.tweet }}</h6>
+                    <p class="card-text">{{ message.text }}</p>
+                    <a href="/admin/tltwitter/message/{{ message.id }}/change/" class="card-link"><span class="badge badge-pill badge-light">edit</span></a>
+                    <form class="sendbot">{% csrf_token %}<input name="id" id="id" value="{{ message.id }}" type="hidden"><a href="#" id="sendbot" class="card-link sendbot"><span id="sendbot" class="badge badge-pill badge-success">Send</span></a></form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+    <div class="col">
+        <div class="col-sm-12 col-md-12">
+            <h3>Last users</h3>
+        </div>
+        <div class="col-sm-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock content %}
